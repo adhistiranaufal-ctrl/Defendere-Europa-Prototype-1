@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="WaveData" format=3 uid="uid://dwnxqcynunecg"]
+
+[ext_resource type="Resource" uid="uid://cae3kwi8ec6ru" path="res://data/Enemies/walker.tres" id="1_8kg4p"]
+[ext_resource type="Script" uid="uid://lf0w7ardotij" path="res://scripts/wave_data.gd" id="2_taf5k"]
+
+[resource]
+script = ExtResource("2_taf5k")
+enemy_data = ExtResource("1_8kg4p")
+count = 25
+metadata/_custom_type_script = "uid://lf0w7ardotij"

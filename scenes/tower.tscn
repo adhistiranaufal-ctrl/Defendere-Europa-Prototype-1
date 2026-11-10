@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://bp4isl1s2x4ow"]
+
+[ext_resource type="Script" uid="uid://dvpsc5ay4hgei" path="res://scripts/tower.gd" id="1_ay4al"]
+[ext_resource type="Texture2D" uid="uid://b8x2d35lko5w7" path="res://assets/NATO_Tower/Military_Symbol_-_Friendly_Unit_(Solid_Light_1.5x1_Frame)-_Anti-Tank_(NATO_APP-6).svg.webp" id="2_ktxwe"]
+
+[node name="Tower" type="Node2D" unique_id=596069888]
+position = Vector2(0, -75)
+script = ExtResource("1_ay4al")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=636472886]
+rotation = -1.5707964
+scale = Vector2(0.24, 0.2)
+texture = ExtResource("2_ktxwe")
+
+[node name="ProgressBar" type="ProgressBar" parent="." unique_id=769351146]
+offset_left = -2.0
+offset_top = 22.0
+offset_right = 2.0
+offset_bottom = 49.0
+metadata/_edit_use_anchors_ = true

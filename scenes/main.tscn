@@ -1,0 +1,82 @@
+[gd_scene format=3 uid="uid://ce5dxqwblffnw"]
+
+[ext_resource type="Script" uid="uid://d4h3kckk2kdel" path="res://scripts/main.gd" id="1_sugp2"]
+[ext_resource type="Script" uid="uid://dwpeh1q5ygalv" path="res://scripts/placement.gd" id="2_jyhfs"]
+[ext_resource type="Script" uid="uid://lf0w7ardotij" path="res://scripts/wave_data.gd" id="2_ya4ey"]
+[ext_resource type="Resource" uid="uid://vd0sdl0af5rp" path="res://data/waves/wave_1.tres" id="3_eb6dy"]
+[ext_resource type="Script" uid="uid://dgcfutix5y6bm" path="res://data/Towers/tower_data.gd" id="3_jyhfs"]
+[ext_resource type="Resource" uid="uid://c2e7f05xmqcu4" path="res://data/Towers/infantry.tres" id="3_sugp2"]
+[ext_resource type="Resource" uid="uid://w4r8264a5ge0" path="res://data/waves/wave_2.tres" id="4_trceg"]
+[ext_resource type="Resource" uid="uid://jpb5lxxg36h0" path="res://data/waves/wave_3.tres" id="5_a8y0u"]
+[ext_resource type="Script" uid="uid://b7v17yoxn16yf" path="res://scripts/hud.gd" id="5_tbgi4"]
+[ext_resource type="Resource" uid="uid://dwnxqcynunecg" path="res://data/waves/wave_4.tres" id="6_jkv2x"]
+[ext_resource type="Resource" uid="uid://cusmmcfcworhc" path="res://data/waves/wave_5.tres" id="7_jbj1t"]
+
+[sub_resource type="Curve2D" id="Curve2D_jyhfs"]
+
+[sub_resource type="Curve2D" id="Curve2D_sugp2"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 102.44706, 24.26389, 0, 0, 0, 0, 114.24234, 66.77244, 0, 0, 0, 0, 136.52232, 107.003746, 0, 0, 0, 0, 161.4235, 131.29434, 0, 0, 0, 0, 202.05168, 157.1031, 0, 0, 0, 0, 244.64575, 175.32106, 0, 0, 0, 0, 291.1716, 201.12982, 0, 0, 0, 0, 375.0492, 247.43378, 0, 0, 0, 0, 422.88562, 322.58282, 0, 0, 0, 0, 473.99854, 378.75485, 0, 0, 0, 0, 547.3914, 421.2634, 0, 0, 0, 0, 603.74664, 459.97653)
+}
+point_count = 12
+
+[node name="Main" type="Path2D" unique_id=726043499]
+position = Vector2(210, 73)
+curve = SubResource("Curve2D_jyhfs")
+script = ExtResource("1_sugp2")
+waves = Array[ExtResource("2_ya4ey")]([ExtResource("3_eb6dy"), ExtResource("4_trceg"), ExtResource("5_a8y0u"), ExtResource("6_jkv2x"), ExtResource("7_jbj1t")])
+first_wave_delay = 5.0
+
+[node name="Map" type="Node2D" parent="." unique_id=1998380893]
+
+[node name="Placement" type="Node2D" parent="." unique_id=777903420 node_paths=PackedStringArray("path")]
+script = ExtResource("2_jyhfs")
+path = NodePath("../Zombiepath")
+tower_types = Array[ExtResource("3_jyhfs")]([ExtResource("3_sugp2")])
+
+[node name="Zombiepath" type="Path2D" parent="." unique_id=1332022851]
+position = Vector2(-338.33765, -84.96481)
+scale = Vector2(1.5260336, 1.3173821)
+curve = SubResource("Curve2D_sugp2")
+
+[node name="HUD" type="CanvasLayer" parent="." unique_id=1982158032 node_paths=PackedStringArray("placement")]
+script = ExtResource("5_tbgi4")
+placement = NodePath("../Placement")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HUD" unique_id=1039596891]
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+
+[node name="CreditsLabel" type="Label" parent="HUD/VBoxContainer" unique_id=990399555]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="LivesLabel" type="Label" parent="HUD/VBoxContainer" unique_id=1949935221]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="WaveLabel" type="Label" parent="HUD/VBoxContainer" unique_id=1087211799]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Toolbar" type="HBoxContainer" parent="HUD" unique_id=1529700465]
+unique_name_in_owner = true
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+
+[node name="MessageLabel" type="Label" parent="HUD" unique_id=1900313378]
+unique_name_in_owner = true
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 48
+horizontal_alignment = 1
+vertical_alignment = 1
